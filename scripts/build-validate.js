@@ -43,7 +43,7 @@ function validateStandardBuild() {
   const cssContent = fs.readFileSync('./build/esm/styles.css', 'utf-8');
   assert.ok(
     cssContent.includes(
-      '.DiscountAppComponents-UsageLimitsCard__TotalUsageLimitTextField{',
+      '.DiscountAppComponents-UsageLimitsCard-UsageLimits__TotalUsageLimitTextField{',
     ),
   );
 }
