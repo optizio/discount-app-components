@@ -59,30 +59,30 @@ function validateEsNextBuild() {
   );
   assert.ok(
     fs.existsSync(
-      './build/esnext/components/UsageLimitsCard/UsageLimitsCard.css',
+      './build/esnext/components/UsageLimitsCard/components/UsageLimits/UsageLimits.css',
     ),
   );
 
   // ESnext build css contains namespaced classes
   const cssContent = fs.readFileSync(
-    './build/esnext/components/UsageLimitsCard/UsageLimitsCard.css',
+    './build/esnext/components/UsageLimitsCard/components/UsageLimits/UsageLimits.css',
     'utf-8',
   );
   assert.ok(
     cssContent.includes(
-      '.DiscountAppComponents-UsageLimitsCard__TotalUsageLimitTextField_1kj4n{',
+      '.DiscountAppComponents-UsageLimitsCard-UsageLimits__TotalUsageLimitTextField_1kj4n{',
     ),
   );
 
   const jsContent = fs.readFileSync(
-    './build/esnext/components/UsageLimitsCard/UsageLimitsCard.scss.esnext',
+    './build/esnext/components/UsageLimitsCard/components/UsageLimits/UsageLimits.scss.esnext',
     'utf-8',
   );
 
-  assert.ok(jsContent.includes("import './UsageLimitsCard.css';"));
+  assert.ok(jsContent.includes("import './UsageLimits.css';"));
   assert.ok(
     jsContent.includes(
-      '"TotalUsageLimitTextField": "DiscountAppComponents-UsageLimitsCard__TotalUsageLimitTextField_1kj4n"',
+      '"TotalUsageLimitTextField": "DiscountAppComponents-UsageLimitsCard-UsageLimits__TotalUsageLimitTextField_1kj4n"',
     ),
   );
 }
