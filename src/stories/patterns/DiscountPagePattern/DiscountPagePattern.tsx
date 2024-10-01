@@ -15,7 +15,6 @@ import {
   DiscountMethod,
   DiscountStatus,
   Eligibility,
-  RecurringPaymentType,
   RequirementType,
   SupportedCountryCode,
 } from '../../../constants';
@@ -141,10 +140,6 @@ export default function DiscountPage({id = '1'}) {
   // Usage limits card
   const [totalUsageLimit, setTotalUsageLimit] = useState<string | null>(null);
   const [oncePerCustomer, setOncePerCustomer] = useState(false);
-  const [recurringPaymentType, setRecurringPaymentType] = useState(
-    RecurringPaymentType.AllPayments,
-  );
-  const [recurringPaymentsLimit, setRecurringPaymentsLimit] = useState('');
 
   const discountDescriptor =
     discountMethod === DiscountMethod.Automatic ? discountTitle : discountCode;
@@ -191,6 +186,7 @@ export default function DiscountPage({id = '1'}) {
                 isRecurring={sellsSubscriptions}
               />
               <UsageLimitsCard
+                isLimited
                 totalUsageLimit={{
                   value: totalUsageLimit,
                   onChange: setTotalUsageLimit,
@@ -198,15 +194,6 @@ export default function DiscountPage({id = '1'}) {
                 oncePerCustomer={{
                   value: oncePerCustomer,
                   onChange: setOncePerCustomer,
-                }}
-                isRecurring={sellsSubscriptions}
-                recurringPaymentType={{
-                  value: recurringPaymentType,
-                  onChange: setRecurringPaymentType,
-                }}
-                recurringPaymentLimit={{
-                  value: recurringPaymentsLimit,
-                  onChange: setRecurringPaymentsLimit,
                 }}
               />
             </>

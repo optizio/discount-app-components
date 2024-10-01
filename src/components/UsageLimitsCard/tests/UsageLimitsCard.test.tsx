@@ -49,11 +49,7 @@ describe('UsageLimitsCard', () => {
   });
 
   it('renders neither', () => {
-    const usageLimits = mountWithApp(
-      <UsageLimitsCard
-        
-      />,
-    );
+    const usageLimits = mountWithApp(<UsageLimitsCard />);
 
     expect(usageLimits).not.toContainReactComponent(Card);
     expect(usageLimits).not.toContainReactComponent(Text);
